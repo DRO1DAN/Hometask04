@@ -1,120 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace ConsoleApplication
 {
-    abstract class Worker
-    {
-        public string Name { get; set; }
-        public string Position { get; protected set; }
-        public List<string> WorkDay { get; private set; }
-
-        public Worker(string name)
-        {
-            Name = name;
-            WorkDay = new List<string>();
-        }
-
-        public void Call()
-        {
-            WorkDay.Add($"{Name} is making a call.");
-        }
-
-        public void WriteCode()
-        {
-            WorkDay.Add($"{Name} is writing code.");
-        }
-
-        public void Relax()
-        {
-            WorkDay.Add($"{Name} is relaxing.");
-        }
-
-        public abstract void FillWorkDay();
-    }
-
-    class Developer : Worker
-    {
-        public Developer(string name) : base(name)
-        {
-            Position = "Розробник";
-        }
-
-        public override void FillWorkDay()
-        {
-            WriteCode();
-            Call();
-            Relax();
-            WriteCode();
-        }
-    }
-
-    class Manager : Worker
-    {
-        private Random random;
-
-        public Manager(string name) : base(name)
-        {
-            Position = "Менеджер";
-            random = new Random();
-        }
-
-        public override void FillWorkDay()
-        {
-            int firstCallCount = random.Next(1, 11);
-            for (int i = 0; i < firstCallCount; i++)
-            {
-                Call();
-            }
-            Relax();
-            int secondCallCount = random.Next(1, 6);
-            for (int i = 0; i < secondCallCount; i++)
-            {
-                Call();
-            }
-        }
-    }
-
-    class Team
-    {
-        public string TeamName { get; private set; }
-        private List<Worker> Workers;
-
-        public Team(string teamName)
-        {
-            TeamName = teamName;
-            Workers = new List<Worker>();
-        }
-
-        public void AddWorker(Worker worker)
-        {
-            Workers.Add(worker);
-        }
-
-        public void ShowTeamInfo()
-        {
-            Console.WriteLine($"Team: {TeamName}");
-            foreach (var worker in Workers)
-            {
-                Console.WriteLine(worker.Name);
-            }
-        }
-
-        public void ShowDetailedInfo()
-        {
-            Console.WriteLine($"Team: {TeamName}");
-            foreach (var worker in Workers)
-            {
-                Console.WriteLine($"{worker.Name} - {worker.Position}");
-                foreach (var activity in worker.WorkDay)
-                {
-                    Console.WriteLine(activity);
-                }
-            }
-        }
-    }
-
     class Program
     {
         static void Main(string[] args)
@@ -171,7 +58,6 @@ namespace ConsoleApplication
                             break;
                         }
 
-
                     case "3":
                         foreach (var t in teams)
                         {
@@ -198,7 +84,6 @@ namespace ConsoleApplication
                         Console.WriteLine("Невірний вибір.");
                         break;
                 }
-
             }
         }
     }
