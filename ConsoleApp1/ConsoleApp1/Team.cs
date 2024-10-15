@@ -1,4 +1,4 @@
-﻿using ConsoleApplication;
+﻿namespace ConsoleApplication;
 
 class Team
 {
