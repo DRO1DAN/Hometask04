@@ -12,20 +12,11 @@ abstract class Worker
         WorkDay = new List<string>();
     }
 
-    public void Call()
-    {
-        WorkDay.Add($"{Name} is making a call.");
-    }
+    abstract public void Call();
 
-    public void WriteCode()
-    {
-        WorkDay.Add($"{Name} is writing code.");
-    }
+    abstract public void WriteCode();
 
-    public void Relax()
-    {
-        WorkDay.Add($"{Name} is relaxing.");
-    }
+    abstract public void Relax();
 
     public abstract void FillWorkDay();
 }
