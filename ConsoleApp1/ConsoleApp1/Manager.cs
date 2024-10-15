@@ -2,12 +2,11 @@
 
 class Manager : Worker
 {
-    static private Random random;
+    static private Random random = new Random();
 
     public Manager(string name) : base(name)
     {
         Position = "Менеджер";
-        random = new Random();
     }
 
     public override void FillWorkDay()
